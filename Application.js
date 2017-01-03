@@ -2,27 +2,27 @@
  * Created by Lenovo on 1/3/2017.
  */
 var Employee = function() {
-    var emp_id;
-    var emp_name;
+    var empId;
+    var empName;
     var type;
     var dob;
     var experience;
-    var date_of_joining;
+    var dateOfJoining;
     function get_emp_id()
     {
-        return emp_id;
+        return empId;
     }
     function set_emp_id(empid)
     {
-        emp_id = empid;
+        empId = empid;
     }
     function get_emp_name()
     {
-        return emp_name;
+        return empName;
     }
     function set_emp_name(empname)
     {
-        emp_name = empname;
+        empName = empname;
     }
     function get_emp_type()
     {
@@ -51,11 +51,11 @@ var Employee = function() {
     }
     function get_emp_date_of_joining()
     {
-        return date_of_joining;
+        return dateOfJoining;
     }
     function set_emp_date_of_joining(date_of_join)
     {
-        date_of_joining = date_of_join;
+        dateOfJoining = date_of_join;
     }
     return{
         "setEmpName" : set_emp_name,
@@ -76,8 +76,8 @@ var Employee = function() {
 }
 var getEmployees = function()
 {
-    var Emplo =[];
-
+    var emplo =[];
+    var id = 0;
     function loadEmployees()
     {
         var table = document.getElementById("employee");
@@ -100,11 +100,12 @@ var getEmployees = function()
                 emp1.setEmpDob(employee.dob);
                 emp1.setEmpExp(employee.experience);
                 emp1.setEmpDoj(employee.date_of_joining);
-                Emplo.push(emp1);
+                emplo.push(emp1);
                 prepareTable(table,emp1.getEmpId(),emp1.getEmpName());
+                id++;
             }
             console.log("Array of objects ");
-            console.log(Emplo);
+            console.log(emplo);
            /* for(var i=0;i<Emplo.length;i++)
             {
                 var emp = Emplo[i];
@@ -132,10 +133,13 @@ var getEmployees = function()
     function prepareTable(table,value1,value2)
     {
         var tr =  document.createElement("tr");
+        tr.setAttribute("onclick","getDetails(row"+id+")");
         var td1 = document.createElement("td");
         var td2 = document.createElement("td");
         var input1 = document.createElement("Input");
         input1.setAttribute("value",value1);
+        input1.setAttribute("id","row"+id);
+
         input1.setAttribute("type","text");
         input1.setAttribute("onclick","getDetails(this)");
 
@@ -155,10 +159,11 @@ var getEmployees = function()
             var empDetails = document.getElementById("employeeDetails");
             var empDetailsnew = document.createElement("div");
             empDetailsnew.id = "employeeDetails";
-            console.log("uuuuuuuu "+Emplo.length);
-            for(var i=0;i<Emplo.length;i++)
+            console.log("uuuuuuuu "+emplo.length);
+            for(var i=0;i<emplo.length;i++)
             {
-                var emp = Emplo[i];
+                var emp = emplo[i];
+                var emp = emplo[i];
                 //alert("Emplo iterating");
 
                 if(emp.getEmpId() == empid.value)
