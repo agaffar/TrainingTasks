@@ -1,0 +1,68 @@
+{
+  "user" : [
+    {
+      "emp_id" : "01",
+      "emp_name" : "Employee1",
+      "type" : "software Trainee",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    },
+    {
+      "emp_id" : "02",
+      "emp_name" : "Employee2",
+      "type" : "software Engineer",
+      "dob" : "1994-04-19",
+      "experience" : "1 year",
+      "date_of_joining" : "2015-12-31"
+    },
+    {
+      "emp_id" : "03",
+      "emp_name" : "Employee3",
+      "type" : "Network Administration",
+      "dob" : "1994-04-19",
+      "experience" : "4 years",
+      "date_of_joining" : "2012-12-31"
+    },
+    {
+      "emp_id" : "04",
+      "emp_name" : "Employee4",
+      "type" : "System Administrator",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    },
+    {
+      "emp_id" : "05",
+      "emp_name" : "Employee5",
+      "type" : "software Trainee",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    },
+    {
+      "emp_id" : "06",
+      "emp_name" : "Employee7",
+      "type" : "software Trainee",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    },
+    {
+      "emp_id" : "07",
+      "emp_name" : "Employee7",
+      "type" : "software Trainee",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    },
+    {
+      "emp_id" : "08",
+      "emp_name" : "Employee8",
+      "type" : "software Trainee",
+      "dob" : "1994-04-19",
+      "experience" : "2 years",
+      "date_of_joining" : "2014-12-31"
+    }
+  ]
+}
