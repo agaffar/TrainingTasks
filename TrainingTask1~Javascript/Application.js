@@ -8,69 +8,68 @@ var Employee = function() {
     var dob;
     var experience;
     var dateOfJoining;
-    function get_emp_id()
+    function getEmpId()
     {
         return empId;
     }
-    function set_emp_id(empid)
+    function setEmpId(empid)
     {
         empId = empid;
     }
-    function get_emp_name()
+    function getEmpName()
     {
         return empName;
     }
-    function set_emp_name(empname)
+    function setEmpName(empname)
     {
         empName = empname;
     }
-    function get_emp_type()
+    function getEmpType()
     {
         return type;
     }
-    function set_emp_type(typ)
+    function setEmpType(typ)
     {
         type = typ;
 
     }
-    function get_emp_dob()
+    function getEmpDob()
     {
         return dob;
     }
-    function set_emp_dob(dob1)
+    function setEmpDob(dob1)
     {
         dob = dob1;
     }
-    function get_emp_experience()
+    function getEmpExperience()
     {
         return experience;
     }
-    function set_emp_experience(experiences)
+    function setEmpExperience(experiences)
     {
         experience = experiences;
     }
-    function get_emp_date_of_joining()
+    function getEmpDateOfJoining()
     {
         return dateOfJoining;
     }
-    function set_emp_date_of_joining(date_of_join)
+    function setEmpDateOfJoining(dateOfJoin)
     {
-        dateOfJoining = date_of_join;
+        dateOfJoining = dateOfJoin;
     }
     return{
-        "setEmpName" : set_emp_name,
-        "getEmpName" : get_emp_name,
-        "setEmpId" : set_emp_id,
-        "getEmpId" : get_emp_id,
-        "setEmpType" : set_emp_type,
-        "getEmpType" : get_emp_type,
-        "setEmpDob" : set_emp_dob,
-        "getEmpDob" : get_emp_dob,
-        "setEmpExp" : set_emp_experience,
-        "getEmpExp" : get_emp_experience,
-        "setEmpDoj" : set_emp_date_of_joining,
-        "getEmpDoj" : get_emp_date_of_joining
-
+        setEmpName : setEmpName,
+        getEmpName : getEmpName,
+        setEmpId : setEmpId,
+        getEmpId : getEmpId,
+        setEmpType : setEmpType,
+        getEmpType : getEmpType,
+        setEmpDob : setEmpDob,
+        getEmpDob : getEmpDob,
+        setEmpExp : setEmpExperience,
+        getEmpExp : getEmpExperience,
+        setEmpDoj : setEmpDateOfJoining,
+        getEmpDoj : getEmpDateOfJoining
     }
 
 }
@@ -84,9 +83,9 @@ var getEmployees = function()
 
         getJson(function(response)
         {
-            var json_array = JSON.parse(response);
-            console.log(json_array);
-            var user = json_array.user;
+            var jsonArray = JSON.parse(response);
+            console.log(jsonArray);
+            var user = jsonArray.user;
 
             for(var i=0;i<user.length;i++)
             {
@@ -156,9 +155,6 @@ var getEmployees = function()
     {
         //alert("here"+empid.value);
 
-            var empDetails = document.getElementById("employeeDetails");
-            var empDetailsnew = document.createElement("div");
-            empDetailsnew.id = "employeeDetails";
             console.log("uuuuuuuu "+emplo.length);
             for(var i=0;i<emplo.length;i++)
             {
@@ -168,66 +164,27 @@ var getEmployees = function()
 
                 if(emp.getEmpId() == empid.value)
                 {
-                   /* var Lab1 = document.createElement("label");
-                    Lab1.innerHTML = "Employee Id : ";
-                    var EmpId = document.createElement("label");
-                    EmpId.innerHTML = emp.getEmpId();
-                    var bre = document.createElement("br");
-                    empDetailsnew.appendChild(Lab1);
-                    empDetailsnew.appendChild(EmpId);
-                    empDetailsnew.appendChild(document.createElement("br"));
+                    return emp;
 
-                    var lab2 = document.createElement("label");
-                    lab2.innerHTML = "Employee Name : ";
-                    var EmpName = document.createElement("label");
-                    EmpName.innerHTML = emp.getEmpName();
-                    empDetailsnew.appendChild(lab2);
-                    empDetailsnew.appendChild(EmpName);
-                    empDetailsnew.appendChild(document.createElement("br"));
-
-                    var lab3 = document.createElement("label");
-                    lab3.innerHTML = "Employee Type : ";
-                    var EmpType = document.createElement("label");
-                    EmpType.innerHTML = emp.getEmpType();
-                    empDetailsnew.appendChild(lab3);
-                    empDetailsnew.appendChild(EmpType);
-                    empDetailsnew.appendChild(document.createElement("br"));
-
-                    var lab4 = document.createElement("label");
-                    lab4.innerHTML = "Employee Dob : ";
-                    var EmpDob = document.createElement("label");
-                    EmpDob.innerHTML = emp.getEmpDob();
-                    empDetailsnew.appendChild(lab4);
-                    empDetailsnew.appendChild(EmpDob);
-                    empDetailsnew.appendChild(document.createElement("br"));
-
-                    var lab5 = document.createElement("label");
-                    lab5.innerHTML = "Employee Experience : ";
-                    var EmpExp = document.createElement("label");
-                    EmpExp.innerHTML = emp.getEmpExp();
-                    empDetailsnew.appendChild(lab5);
-                    empDetailsnew.appendChild(EmpExp);
-                    empDetailsnew.appendChild(document.createElement("br"));
-
-                    var lab6 = document.createElement("label");
-                    lab6.innerHTML = "Employee Date of Joining : ";
-                    var EmpDoj = document.createElement("label");
-                    EmpDoj.innerHTML = emp.getEmpDoj();
-                    empDetailsnew.appendChild(lab6);
-                    empDetailsnew.appendChild(EmpDoj);
-                    empDetailsnew.appendChild(document.createElement("br"));*/
-                    prepareHtml("Employee Id :",emp.getEmpId(),empDetailsnew);
-                    prepareHtml("Employee Name :",emp.getEmpName(),empDetailsnew);
-                    prepareHtml("Employee Type :",emp.getEmpType(),empDetailsnew);
-                    prepareHtml("Employee Dob :",emp.getEmpDob(),empDetailsnew);
-                    prepareHtml("Employee Experience :",emp.getEmpExp(),empDetailsnew);
-                    prepareHtml("Employee Date of Joining :",emp.getEmpDoj(),empDetailsnew);
-                    break;
                 }
 
             }
-            var parentNode = empDetails.parentNode;
-            parentNode.replaceChild(empDetailsnew,empDetails);
+
+    }
+    function DisplayDetails(emp)
+    {
+        var empDetails = document.getElementById("employeeDetails");
+        var empDetailsnew = document.createElement("div");
+        empDetailsnew.id = "employeeDetails";
+
+        prepareHtml("Employee Id :",emp.getEmpId(),empDetailsnew);
+        prepareHtml("Employee Name :",emp.getEmpName(),empDetailsnew);
+        prepareHtml("Employee Type :",emp.getEmpType(),empDetailsnew);
+        prepareHtml("Employee Dob :",emp.getEmpDob(),empDetailsnew);
+        prepareHtml("Employee Experience :",emp.getEmpExp(),empDetailsnew);
+        prepareHtml("Employee Date of Joining :",emp.getEmpDoj(),empDetailsnew);
+        var parentNode = empDetails.parentNode;
+        parentNode.replaceChild(empDetailsnew,empDetails);
 
     }
     function prepareHtml(Label,value,empDetailsnew)
@@ -243,8 +200,9 @@ var getEmployees = function()
 
     }
     return{
-        "loadEmployees" : loadEmployees,
-        "getEmployee" : getEmployeeDetails
+        loadEmployees : loadEmployees,
+        getEmployee : getEmployeeDetails,
+        DisplayDetails : DisplayDetails,
     }
 }
 function getJson(callback){

@@ -8,5 +8,6 @@ window.onload = function(){
 }
 function getDetails(input)
 {
-    window.emp.getEmployee(input);
+    var employeeObject = window.emp.getEmployee(input);
+    window.emp.DisplayDetails(employeeObject);
 }

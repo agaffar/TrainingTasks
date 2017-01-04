@@ -8,68 +8,68 @@ var Employee = function() {
     var dob;
     var experience;
     var dateOfJoining;
-    function get_emp_id()
+    function getEmpId()
     {
         return empId;
     }
-    function set_emp_id(empid)
+    function setEmpId(empid)
     {
         empId = empid;
     }
-    function get_emp_name()
+    function getEmpName()
     {
         return empName;
     }
-    function set_emp_name(empname)
+    function setEmpName(empname)
     {
         empName = empname;
     }
-    function get_emp_type()
+    function getEmpType()
     {
         return type;
     }
-    function set_emp_type(typ)
+    function setEmpType(typ)
     {
         type = typ;
 
     }
-    function get_emp_dob()
+    function getEmpDob()
     {
         return dob;
     }
-    function set_emp_dob(dob1)
+    function setEmpDob(dob1)
     {
         dob = dob1;
     }
-    function get_emp_experience()
+    function getEmpExperience()
     {
         return experience;
     }
-    function set_emp_experience(experiences)
+    function setEmpExperience(experiences)
     {
         experience = experiences;
     }
-    function get_emp_date_of_joining()
+    function getEmpDateOfJoining()
     {
         return dateOfJoining;
     }
-    function set_emp_date_of_joining(date_of_join)
+    function setEmpDateOfJoining(dateOfJoin)
     {
-        dateOfJoining = date_of_join;
+        dateOfJoining = dateOfJoin;
     }
     return{
-        "setEmpName" : set_emp_name,
-        "getEmpName" : get_emp_name,
-        "setEmpId" : set_emp_id,
-        "getEmpId" : get_emp_id,
-        "setEmpType" : set_emp_type,
-        "getEmpType" : get_emp_type,
-        "setEmpDob" : set_emp_dob,
-        "getEmpDob" : get_emp_dob,
-        "setEmpExp" : set_emp_experience,
-        "getEmpExp" : get_emp_experience,
-        "setEmpDoj" : set_emp_date_of_joining,
-        "getEmpDoj" : get_emp_date_of_joining
+        setEmpName : setEmpName,
+        getEmpName : getEmpName,
+        setEmpId : setEmpId,
+        getEmpId : getEmpId,
+        setEmpType : setEmpType,
+        getEmpType : getEmpType,
+        setEmpDob : setEmpDob,
+        getEmpDob : getEmpDob,
+        setEmpExp : setEmpExperience,
+        getEmpExp : getEmpExperience,
+        setEmpDoj : setEmpDateOfJoining,
+        getEmpDoj : getEmpDateOfJoining
 
     }
 
@@ -82,7 +82,7 @@ var getEmployes = function()
     {
         var table = document.getElementById("employee");
 
-        jQuery.ajax({url: "Employees.json", success: function(result){
+        getJqueryAjax(function(result){
             var json_array = result;
             console.log(json_array);
             var user = json_array.user;
@@ -107,30 +107,17 @@ var getEmployes = function()
             console.log(emplo);
             console.log(result);
 
-        }, failure : function(result){
-            console.log("failure "+result);
-
-        }});
-
-
-
+        });
     }
     function prepareTable(value1,value2)
     {
         console.log(value1);
         var tr = jQuery('<tr>', {
             id: value1,
-            /*onclick: function(){
-                alert("iiiiiiiii");
-                //console.log(value1+"------");
-                //getEmployeeDetails(this.id);
-
-            }*/
         }).on("click",function(){
-            //alert("iiiiiiiii");
             console.log(value1+"------");
-            getEmployeeDetails(this.id);
-
+           var empObject = getEmployeeDetails(this.id);
+           displayDetails(empObject);
         }).append(
             jQuery('<td>',{
                 html : value1
@@ -141,69 +128,53 @@ var getEmployes = function()
 
         ).appendTo('#employee');
         console.log(tr);
-        //$('#employee').append(tr);
-        //table.appendChild(tr);
     }
 
     function getEmployeeDetails(empid)
     {
-        //alert("here"+empid.value);
-        var htm;
-
-        //$('#employeeDetails').children().remove();
             console.log("uuuuuuuu "+emplo.length);
-        jQuery("#employeeDetails").html("");
             for(var i=0;i<emplo.length;i++)
             {
                 var emp = emplo[i];
                 var emp = emplo[i];
-                //alert("Emplo iterating");
-
                 if(emp.getEmpId() == empid)
                 {
                     console.log("if ok");
-                    jQuery("#employeeDetails").html(prepareHtml("Employee Id :",emp.getEmpId())) ;
-                    jQuery("#employeeDetails").append(prepareHtml("Employee Name :",emp.getEmpName()));
-                    jQuery("#employeeDetails").append(prepareHtml("Employee Type :",emp.getEmpType()));
-                    jQuery("#employeeDetails").append(prepareHtml("Employee Dob :",emp.getEmpDob()));
-                    jQuery("#employeeDetails").append(prepareHtml("Employee Experience :",emp.getEmpExp()));
-                    jQuery("#employeeDetails").append(prepareHtml("Employee Date of Joining :",emp.getEmpDoj()));
-                    break;
+                    return emp;
                 }
 
             }
+    }
+    function displayDetails(emp)
+    {
+        jQuery("#employeeDetails").html("");
 
-            //var parentNode = empDetails.parentNode;
-            //parentNode.replaceChild(empDetailsnew,empDetails);
+        jQuery("#employeeDetails").html(prepareHtml("Employee Id :",emp.getEmpId())) ;
+        jQuery("#employeeDetails").append(prepareHtml("Employee Name :",emp.getEmpName()));
+        jQuery("#employeeDetails").append(prepareHtml("Employee Type :",emp.getEmpType()));
+        jQuery("#employeeDetails").append(prepareHtml("Employee Dob :",emp.getEmpDob()));
+        jQuery("#employeeDetails").append(prepareHtml("Employee Experience :",emp.getEmpExp()));
+        jQuery("#employeeDetails").append(prepareHtml("Employee Date of Joining :",emp.getEmpDoj()));
 
     }
     function prepareHtml(Label,value)
     {
-       /* var empDetails = $('<label>',{
-            html : Label
-        }).append(
-            $('<label>',{
-                html : value
-            }),
-            $('<br>')
-        );*/
           var htm= '<label>'+Label+'</label>&nbsp;<label>'+value+'</label><br>';
         return htm;
-
-
     }
     return{
-        "loadEmployes" : loadEmployes,
-        "getEmployee" : getEmployeeDetails
+        loadEmployes : loadEmployes,
+        getEmployee : getEmployeeDetails,
+        displayDetails : displayDetails
+
     }
 }
-function getJqueryAjax()
+function getJqueryAjax(callback)
 {
-    jQuery.ajax({url: "/Employees.json", success: function(result){
+    jQuery.ajax({url: "Employees.json", success: function(result){
         console.log(result);
-        return result;
+        callback(result);
     }, failure : function(result){
         console.log("failure "+result);
-        return result;
     }});
 }
