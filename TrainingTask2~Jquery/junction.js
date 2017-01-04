@@ -2,7 +2,7 @@
  * Created by Lenovo on 1/3/2017.
  */
 jQuery(document).ready(function(){
-    alert("hhhhhhhhhhhhhhhhh");
+    //alert("hhhhhhhhhhhhhhhhh");
     window.emp = getEmployes();
     emp.loadEmployes();
 });
